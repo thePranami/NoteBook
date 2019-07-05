@@ -1,6 +1,7 @@
 package com.example.thepranami.notebook.Fragment;
 
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.telephony.SmsManager;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.thepranami.notebook.Database.NotebookDatabse;
 import com.example.thepranami.notebook.R;
+
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,20 +55,24 @@ public class AddDataFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Random random = new Random();
+                String DONOR_ID = String.format("%04d", random.nextInt(10000));
                 String AMOUNT = amount.getText().toString();
                 String NAME = name.getText().toString();
                 String ADDRESS = address.getText().toString();
                 String MOBILE = mobile.getText().toString();
                 String OTHER = other.getText().toString();
                 if (AMOUNT.isEmpty() || NAME.isEmpty() || ADDRESS.isEmpty()) {
-                    Log.e("aaaaaaaa", AMOUNT+  ADDRESS+ NAME+ MOBILE+ OTHER);
                     Toast.makeText(getContext(), "Please fill required field....", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.e("aaaaaaaa", AMOUNT+  ADDRESS+ NAME+ MOBILE+ OTHER);
-                    boolean isDataInsert = notebookDatabse.insertData(12, Integer.parseInt(AMOUNT),
+                    Log.e("aaaaaaaa", DONOR_ID+"/"+DONOR_ID+"/"+AMOUNT+"/"+NAME+"/"+ADDRESS+"/"+MOBILE+"/"+OTHER);
+                    boolean isDataInsert = notebookDatabse.insertData(Integer.parseInt(AMOUNT),
                             NAME, ADDRESS, MOBILE, OTHER);
 
                     if (isDataInsert = true) {
+//                        Cursor cursor = notebookDatabse.getAllData();
+//                        String s = cursor.getString(0);
+//                        Log.e("aaaaaa", s);
                         Toast.makeText(getContext(), "Thanks, You are Welcome!!!!", Toast.LENGTH_SHORT).show();
 //                        SmsManager smsManager = SmsManager.getDefault();
 //                        smsManager.sendTextMessage(MOBILE, null, "ID :" +"\n" + "AMOUNT: " + AMOUNT+"Rs.\n" + "NAME: "+ NAME+"\n" + "OTHER: "+ OTHER+"\n" +"ADDRESS: "+ ADDRESS+"\n", null, null);

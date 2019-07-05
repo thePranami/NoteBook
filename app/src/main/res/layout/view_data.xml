@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/viewCardView"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    android:background="@drawable/card_border_line">
+
+        <TextView
+            android:id="@+id/srno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Sr. No."/>
+        <!--<View-->
+            <!--android:id="@+id/viewLine"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height=".3dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:layout_below="@+id/srno"/>-->
+        <TextView
+            android:id="@+id/viewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:layout_below="@+id/srno"/>
+        <TextView
+            android:id="@+id/viewAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount"
+            android:textSize="16sp"
+            android:layout_below="@+id/srno"
+            android:layout_alignParentRight="true"/>
+        <TextView
+            android:id="@+id/viewAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:layout_below="@+id/viewName"/>
+        <TextView
+            android:id="@+id/viewOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/viewAmount"/>
+        <TextView
+            android:id="@+id/viewContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact"
+            android:layout_below="@+id/viewAddress"/>
+
+</RelativeLayout>

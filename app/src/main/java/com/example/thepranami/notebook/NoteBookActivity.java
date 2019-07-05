@@ -92,8 +92,10 @@ public class NoteBookActivity extends AppCompatActivity
 
         if (id == R.id.addData) {
             OpenFragment(new AddDataFragment());
+            overridePendingTransition(R.anim.enter_from_right, R.anim.exits_to_right);
         } else if (id == R.id.viewData) {
             OpenFragment(new ViewDataFragment());
+            overridePendingTransition(R.anim.up_from_bottom, R.anim.exits_to_right);
         } else if (id == R.id.updateData) {
             OpenFragment(new UpdateDataFragment());
         } else if (id == R.id.deleteData) {

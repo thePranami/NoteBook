@@ -50,15 +50,13 @@ public class RelativeDatabase extends SQLiteOpenHelper {
             return true;
         }
     }
-
+// getData
     public android.database.Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         android.database.Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
-        /// for updation
-
     }
-
+    /// for updation
     public boolean updateData(String id, Integer amount, String name, String address, String other) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

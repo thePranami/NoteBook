@@ -83,9 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Submit"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/rounded_imageview"
-                android:textColor="@color/colorWhite"/>
+                android:layout_marginTop="30dp"/>
         </LinearLayout>
 
     </ScrollView>

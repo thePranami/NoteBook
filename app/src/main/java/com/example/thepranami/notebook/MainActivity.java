@@ -19,9 +19,10 @@ ActionBar actionBar;
         Thread thread = new Thread(){
             public void run(){
                 try {
-                    sleep(1000);
+                    sleep(100);
                     Intent intent = new Intent(MainActivity.this, NoteBookActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 catch (InterruptedException e){
                     e.printStackTrace();

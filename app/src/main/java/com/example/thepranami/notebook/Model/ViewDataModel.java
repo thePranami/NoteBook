@@ -1,28 +1,24 @@
 package com.example.thepranami.notebook.Model;
 
-public class AddDataModel {
-    private int donerId;
-    private String amount;
-    private String name;
-    private String address;
-    private String mobile;
-    private String other;
+public class ViewDataModel {
+    //int srno;
+    String srno, amount, name, address, contact, other;
 
-    public AddDataModel(int donerId, String amount, String name, String address, String mobile, String other) {
-        this.donerId = donerId;
+    public ViewDataModel(String srno, String amount, String name, String address, String contact, String other) {
+        this.srno = srno;
         this.amount = amount;
         this.name = name;
         this.address = address;
-        this.mobile = mobile;
+        this.contact = contact;
         this.other = other;
     }
 
-    public int getDonerId() {
-        return donerId;
+    public String getSrno() {
+        return srno;
     }
 
-    public void setDonerId(int donerId) {
-        this.donerId = donerId;
+    public void setSrno(String srno) {
+        this.srno = srno;
     }
 
     public String getAmount() {
@@ -49,12 +45,12 @@ public class AddDataModel {
         this.address = address;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getContact() {
+        return contact;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getOther() {
