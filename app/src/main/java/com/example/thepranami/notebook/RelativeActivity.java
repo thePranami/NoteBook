@@ -163,7 +163,6 @@ public class RelativeActivity extends AppCompatActivity {
 
                 else if (e0_id.getText().toString().length() > 0)
                 {
-
                         //  DialogBox code
                         AlertDialog.Builder a_builder = new AlertDialog.Builder(RelativeActivity.this);
                         a_builder.setMessage("Do you want to delete it ?").setCancelable(false)
