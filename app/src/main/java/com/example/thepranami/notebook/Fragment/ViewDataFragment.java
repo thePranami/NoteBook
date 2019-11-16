@@ -20,6 +20,8 @@ import com.example.thepranami.notebook.Utils.VerticalSpaceItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.security.AccessController.getContext;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -35,8 +37,7 @@ public class ViewDataFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
          view = inflater.inflate(R.layout.fragment_view_data, container, false);
          arrayList=new ArrayList<>();
@@ -52,10 +53,13 @@ public class ViewDataFragment extends Fragment {
             Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
         }
         while (cursor.moveToNext()){
-            arrayList.add(new ViewDataModel(cursor.getString(0),
+            arrayList.add(new ViewDataModel(
+                    cursor.getString(0),
                     cursor.getString(1),
-                    cursor.getString(2), cursor.getString(3),
-                    cursor.getString(4), cursor.getString(5)));
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5)));
         }
 ////            arrayList.add(new ViewDataModel(1+i, "Ajay Bahadur ", "2500"+i, "Amaraudha",
 ////                    "9989897676", "Bike"));

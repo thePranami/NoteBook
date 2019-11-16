@@ -58,30 +58,19 @@ public class NotebookDatabse extends SQLiteOpenHelper {
             return true;
         }
     }
-    //fetch data
-    public ArrayList<ViewDataModel> fetchData(){
-        ArrayList<ViewDataModel> list = new ArrayList<>();
-        SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("select * from " + TABLE_NAME, null);
-        StringBuffer buffer = new StringBuffer();;
-        while (cursor.moveToNext()){
-            String id = cursor.getString(cursor.getColumnIndexOrThrow("ID"));
-            String donor_id = cursor.getString(cursor.getColumnIndexOrThrow("DONOR_ID"));
-            String amount = cursor.getString(cursor.getColumnIndexOrThrow("AMOUNT"));
-            String name = cursor.getString(cursor.getColumnIndexOrThrow("NAME"));
-            String address = cursor.getString(cursor.getColumnIndexOrThrow("ADDRESS"));
-            String mobile = cursor.getString(cursor.getColumnIndexOrThrow("MOBILE"));
-            String other = cursor.getString(cursor.getColumnIndexOrThrow("OTHER"));
-//            ViewDataModel viewDataModel = new ViewDataModel(Integer.parseInt(id), name,
-//                    amount, address, mobile, other);
-//            list.add(viewDataModel);
-        }
-        return list;
-    }
+
     //fetch data
     public android.database.Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         android.database.Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
         return res;
+    }
+    //getMax id
+    public android.database.Cursor getMaxId(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.query(TABLE_NAME, null, null, null,
+                null, null, null);
+        cursor.moveToLast();
+        return cursor;
     }
 }

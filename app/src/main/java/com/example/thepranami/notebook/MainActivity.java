@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.thepranami.notebook.Activity.RegistrationActivity;
+
 public class MainActivity extends AppCompatActivity {
 ActionBar actionBar;
 
@@ -20,7 +22,7 @@ ActionBar actionBar;
             public void run(){
                 try {
                     sleep(100);
-                    Intent intent = new Intent(MainActivity.this, NoteBookActivity.class);
+                    Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
                     startActivity(intent);
                     finish();
                 }

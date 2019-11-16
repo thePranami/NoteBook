@@ -1,8 +1,10 @@
 package com.example.thepranami.notebook.Model;
 
-public class ViewDataModel {
+import java.io.Serializable;
+
+public class ViewDataModel implements Serializable {
     //int srno;
-    String srno, amount, name, address, contact, other;
+    private String srno, amount, name, address, contact, other;
 
     public ViewDataModel(String srno, String amount, String name, String address, String contact, String other) {
         this.srno = srno;

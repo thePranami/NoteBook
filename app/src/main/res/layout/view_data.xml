@@ -14,8 +14,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:background="@drawable/round_circle"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="10dp"
+            android:textColor="@color/colorPrimary"
             android:text="Sr. No."/>
         <!--<View-->
             <!--android:id="@+id/viewLine"-->
@@ -29,14 +28,14 @@
             android:layout_height="wrap_content"
             android:text="Name"
             android:textSize="16sp"
-            android:layout_below="@+id/srno"/>
+            android:layout_toRightOf="@+id/srno"
+            android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/viewAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Amount"
             android:textSize="16sp"
-            android:layout_below="@+id/srno"
             android:textColor="@color/colorPrimary"
             android:layout_alignParentRight="true"/>
         <TextView
@@ -44,6 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Address"
+            android:layout_toRightOf="@+id/srno"
+            android:layout_marginLeft="10dp"
             android:layout_below="@+id/viewName"/>
         <TextView
             android:id="@+id/viewOther"

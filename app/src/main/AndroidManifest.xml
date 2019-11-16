@@ -3,6 +3,8 @@
     package="com.example.thepranami.notebook">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +25,10 @@
         <activity
             android:name=".NoteBookActivity"
             android:label="@string/title_activity_note_book"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.ViewActivity" />
+        <activity android:name=".Activity.RegistrationActivity" />
+        <activity android:name=".Activity.LoginActivity"></activity>
     </application>
 
 </manifest>

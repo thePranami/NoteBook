@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.thepranami.notebook.Activity.ViewActivity">
+
+    <TextView
+        android:id="@+id/srno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:background="@drawable/round_circle"
+        android:textColor="@color/colorPrimary"
+        android:text="Sr. No."/>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/srno" />
+    <TextView
+        android:id="@+id/amt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/srno"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/srno"/>
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/amt"/>
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:layout_toRightOf="@+id/srno"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/amt"/>
+    <TextView
+        android:id="@+id/other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Other"
+        android:layout_below="@+id/name"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

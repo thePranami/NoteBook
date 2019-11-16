@@ -1,13 +1,22 @@
 package com.example.thepranami.notebook.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.thepranami.notebook.Activity.ViewActivity;
+import com.example.thepranami.notebook.Fragment.ViewDetailFragment;
 import com.example.thepranami.notebook.Model.ViewDataModel;
 import com.example.thepranami.notebook.R;
 
@@ -16,6 +25,8 @@ import java.util.ArrayList;
 public class ViewDataAdapter extends RecyclerView.Adapter<ViewDataAdapter.DataHolder> {
     private Context context;
     private ArrayList<ViewDataModel> arrayList;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
 
     public ViewDataAdapter(Context context, ArrayList<ViewDataModel> arrayList) {
         this.context = context;
@@ -31,13 +42,28 @@ public class ViewDataAdapter extends RecyclerView.Adapter<ViewDataAdapter.DataHo
 
     @Override
     public void onBindViewHolder(@NonNull DataHolder holder, int position) {
-        ViewDataModel viewDataModel = arrayList.get(position);
+        final ViewDataModel viewDataModel = arrayList.get(position);
         holder.srno.setText(viewDataModel.getSrno());
         holder.amount.setText("₹ "+viewDataModel.getAmount());
         holder.name.setText(viewDataModel.getName());
         holder.address.setText(viewDataModel.getAddress());
-        holder.mobile.setText(viewDataModel.getContact());
+        holder.mobile.setText("+91- "+viewDataModel.getContact());
         holder.other.setText(viewDataModel.getOther());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent intent = new Intent(context, ViewActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("viewdata", viewDataModel);
+                //intent.putExtras(bundle);
+                //context.startActivity(intent);
+                //fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+                ViewDetailFragment viewDetailFragment = new ViewDetailFragment();
+                viewDetailFragment.setArguments(bundle);
+                viewDetailFragment.show(((FragmentActivity)context).getSupportFragmentManager(), "viewdata");
+
+            }
+        });
     }
 
     @Override
@@ -46,7 +72,7 @@ public class ViewDataAdapter extends RecyclerView.Adapter<ViewDataAdapter.DataHo
     }
 
     public class DataHolder extends RecyclerView.ViewHolder {
-        TextView srno, name, amount, address, mobile, other;
+        private TextView srno, name, amount, address, mobile, other;
         public DataHolder(View itemView) {
             super(itemView);
             srno=(TextView)itemView.findViewById(R.id.srno);
