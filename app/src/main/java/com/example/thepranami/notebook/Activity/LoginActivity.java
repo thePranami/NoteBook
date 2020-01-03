@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // setTheme(R.style.AppTheme_Transparent);
         setContentView(R.layout.activity_login);
         mobile=(EditText)findViewById(R.id.loginMobile);
         password=(EditText)findViewById(R.id.loginPassword);

@@ -1,6 +1,7 @@
 package com.example.thepranami.notebook.Fragment;
 
 
+import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,7 @@ public class ViewDataFragment extends Fragment {
     private ArrayList<ViewDataModel> arrayList;
     private ViewDataAdapter viewDataAdapter;
     private NotebookDatabse notebookDatabse;
+    ProgressDialog progressDialog;
 
     public ViewDataFragment() {
         // Required empty public constructor
@@ -41,10 +43,11 @@ public class ViewDataFragment extends Fragment {
         // Inflate the layout for this fragment
          view = inflater.inflate(R.layout.fragment_view_data, container, false);
          arrayList=new ArrayList<>();
+         progressDialog = new ProgressDialog(getContext());
          recyclerView=(RecyclerView)view.findViewById(R.id.viewRecycler);
-        notebookDatabse = new NotebookDatabse(getActivity(), NotebookDatabse.DATABASE_NAME, null, 1);
-
-        setData();
+         notebookDatabse = new NotebookDatabse(getActivity(), NotebookDatabse.DATABASE_NAME,
+                 null, 1);
+         setData();
          return view;
     }
     public void setData(){

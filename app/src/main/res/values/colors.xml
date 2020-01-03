@@ -21,6 +21,7 @@
     <color name="colorPurple">#990000</color>
     <color name="colorTomatoRed">#FF6347</color>
     <color name="colorAppBrown">#eeeeee</color>
+    <!--<color name="transparent">#00000000</color>-->
 
         
 </resources>

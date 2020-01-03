@@ -21,7 +21,7 @@ ActionBar actionBar;
         Thread thread = new Thread(){
             public void run(){
                 try {
-                    sleep(100);
+                    sleep(2000);
                     Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
                     startActivity(intent);
                     finish();

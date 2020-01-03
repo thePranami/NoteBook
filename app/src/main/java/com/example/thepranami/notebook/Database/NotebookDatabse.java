@@ -22,6 +22,7 @@ public class NotebookDatabse extends SQLiteOpenHelper {
     public static final String COL_5 = "ADDRESS";
     public static final String COL_6 = "MOBILE";
     public static final String COL_7 = "OTHER";
+
     public NotebookDatabse(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -72,5 +73,19 @@ public class NotebookDatabse extends SQLiteOpenHelper {
                 null, null, null);
         cursor.moveToLast();
         return cursor;
+    }
+    // update
+    public boolean updateData(String id, String newAmt, String newName, String newAdr, String newMob, String newOth) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        //String id;
+        cv.put(COL_3, newAmt);
+        cv.put(COL_4, newName);
+        cv.put(COL_5, newAdr);
+        cv.put(COL_6, newMob);
+        cv.put(COL_7, newOth);
+
+        db.update(TABLE_NAME, cv, "ID = ?", new String[]{id});
+        return true;
     }
 }

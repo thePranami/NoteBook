@@ -49,6 +49,9 @@ public class ViewDataAdapter extends RecyclerView.Adapter<ViewDataAdapter.DataHo
         holder.address.setText(viewDataModel.getAddress());
         holder.mobile.setText("+91- "+viewDataModel.getContact());
         holder.other.setText(viewDataModel.getOther());
+        if (holder.other.getText().toString().isEmpty()){
+            holder.other.setVisibility(View.GONE);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,8 +63,7 @@ public class ViewDataAdapter extends RecyclerView.Adapter<ViewDataAdapter.DataHo
                 //fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
                 ViewDetailFragment viewDetailFragment = new ViewDetailFragment();
                 viewDetailFragment.setArguments(bundle);
-                viewDetailFragment.show(((FragmentActivity)context).getSupportFragmentManager(), "viewdata");
-
+                viewDetailFragment.show(((FragmentActivity)context).getSupportFragmentManager(), ViewDetailFragment.TAG);
             }
         });
     }

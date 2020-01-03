@@ -3,16 +3,27 @@ package com.example.thepranami.notebook.Fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.thepranami.notebook.Activity.EditDetailActivity;
 import com.example.thepranami.notebook.Model.ViewDataModel;
 import com.example.thepranami.notebook.R;
 
@@ -25,8 +36,10 @@ public class ViewDetailFragment extends BottomSheetDialogFragment implements Vie
 
     private TextView srno, name, amount, other, address, contact;
     private ViewDataModel viewDataModel;
-    private ImageView phone, message, share;
+    private ImageView phone, message, share, edit;
+    private ImageButton phone1;
     View view;
+    public static final String TAG = "MyDialogFragment";
     public ViewDetailFragment() {
         // Required empty public constructor
     }
@@ -51,11 +64,13 @@ public class ViewDetailFragment extends BottomSheetDialogFragment implements Vie
         address=(TextView)view.findViewById(R.id.address);
         contact=(TextView)view.findViewById(R.id.contact);
         phone=(ImageView)view.findViewById(R.id.phone);
+        edit=(ImageView) view.findViewById(R.id.editDetail);
         message=(ImageView)view.findViewById(R.id.message);
         share=(ImageView)view.findViewById(R.id.share);
         phone.setOnClickListener(this);
         message.setOnClickListener(this);
         share.setOnClickListener(this);
+        edit.setOnClickListener(this);
 
         //Intent intent = getIntent();
         //Bundle bundle = intent.getExtras();
@@ -66,11 +81,20 @@ public class ViewDetailFragment extends BottomSheetDialogFragment implements Vie
         address.setText(viewDataModel.getAddress());
         contact.setText("+91- "+viewDataModel.getContact());
     }
+    public void setData(){
 
+    }
+
+    //@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.phone:
+//                AlphaAnimation alpha = new AlphaAnimation(0.5F, 0.5F); // change values as you want
+//                alpha.setDuration(0); // Make animation instant
+//                alpha.setFillAfter(true); // Tell it to persist after the animation ends
+//                phone.startAnimation(alpha);
+               //phone.animate().alpha(45).setDuration(150).start();
                 String phone = "+91"+viewDataModel.getContact().toString();
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_CALL);
@@ -85,6 +109,7 @@ public class ViewDetailFragment extends BottomSheetDialogFragment implements Vie
                 smsIntent.setData(Uri.parse("sms:" + no));
                 smsIntent.putExtra("sms_body", "Good Morning ! how r U ?");
                 startActivity(smsIntent);
+               // message.setImageAlpha(45);
                 break;
             case R.id.share:
                 Intent shareIntent = new Intent();
@@ -95,6 +120,22 @@ public class ViewDetailFragment extends BottomSheetDialogFragment implements Vie
                 String link = "https://play.google.com/store/apps/details?id=com.webrication.sgf";
                 shareIntent.putExtra(Intent.EXTRA_TEXT, "Hey check out \n"+pName+"\n at "+link);
                 startActivity(shareIntent);
+                break;
+            case R.id.editDetail:
+                Intent editIntent = new Intent(getContext(), EditDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("EditDetail", viewDataModel);
+                editIntent.putExtras(bundle);
+                startActivityForResult(editIntent, 111);
+                //dismiss();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==111){
+            init();
         }
     }
 }

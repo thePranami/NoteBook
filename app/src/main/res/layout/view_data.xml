@@ -29,12 +29,15 @@
             android:text="Name"
             android:textSize="16sp"
             android:layout_toRightOf="@+id/srno"
+            android:layout_toLeftOf="@+id/viewAmount"
+            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/viewAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Amount"
+            android:layout_marginRight="5dp"
             android:textSize="16sp"
             android:textColor="@color/colorPrimary"
             android:layout_alignParentRight="true"/>
@@ -45,21 +48,25 @@
             android:text="Address"
             android:layout_toRightOf="@+id/srno"
             android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/viewContact"
+            android:layout_marginRight="10dp"
             android:layout_below="@+id/viewName"/>
         <TextView
             android:id="@+id/viewOther"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Other"
+            android:layout_marginRight="5dp"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/viewAmount"/>
+            android:layout_below="@id/viewContact"/>
         <TextView
             android:id="@+id/viewContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contact"
             android:layout_below="@+id/viewName"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
             android:layout_toLeftOf="@+id/viewOther"/>
 
 </RelativeLayout>

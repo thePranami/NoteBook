@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.AddDataFragment">
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.thepranami.notebook.Activity.EditDetailActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,10 +22,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
                 <EditText
-                    android:id="@+id/addAmount"
+                    android:id="@+id/editAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter amount"
+                    android:hint="Your amount"
                     android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -30,53 +33,53 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
                 <EditText
-                    android:id="@+id/addName"
+                    android:id="@+id/editName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Name"/>
+                    android:hint="Your Name"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
                 <EditText
-                    android:id="@+id/addAddress"
+                    android:id="@+id/editAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Address"/>
+                    android:hint="Your Address"
+                    android:fontFamily="@font/gotham_book"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
                 <EditText
-                    android:id="@+id/addMobile"
+                    android:id="@+id/editMobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:maxLength="10"
-                    android:hint="Enter mobile"/>
+                    android:hint="Your mobile"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
                 <EditText
-                    android:id="@+id/addOther"
+                    android:id="@+id/editOther"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Other"/>
             </android.support.design.widget.TextInputLayout>
             <Button
-                android:id="@+id/submitButton"
+                android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Submit"
+                android:text="Save"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/round_button"
                 android:textColor="@color/colorWhite"/>
         </LinearLayout>
 
     </ScrollView>
-
 </LinearLayout>

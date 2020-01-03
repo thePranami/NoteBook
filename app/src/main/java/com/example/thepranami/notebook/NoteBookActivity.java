@@ -1,6 +1,8 @@
 package com.example.thepranami.notebook;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,7 @@ public class NoteBookActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     FragmentManager fm;
     FragmentTransaction ft;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,5 +118,21 @@ public class NoteBookActivity extends AppCompatActivity
         ft = fm.beginTransaction();
         ft.replace(R.id.main_container, fragment);
         ft.commit();
+    }
+    public void pDialog() {
+        progressDialog = new ProgressDialog(NoteBookActivity.this);
+        progressDialog.setTitle("Loading Data...");
+        progressDialog.setMessage(" Please wait...");
+        progressDialog.setIndeterminate(false);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        };
+        Handler handler = new Handler();
+        handler.postDelayed(runnable, 2000);
     }
 }

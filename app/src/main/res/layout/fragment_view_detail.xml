@@ -25,7 +25,15 @@
             android:text="Name"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
+            android:layout_toLeftOf="@+id/editDetail"
             android:layout_toRightOf="@+id/srno"/>
+        <ImageView
+            android:id="@+id/editDetail"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"/>
         <TextView
             android:id="@+id/amt"
             android:layout_width="wrap_content"
