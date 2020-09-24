@@ -1,9 +1,14 @@
 package com.example.thepranami.notebook.Fragment;
 
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thepranami.notebook.Activity.LoginActivity;
+import com.example.thepranami.notebook.Activity.RegistrationActivity;
 import com.example.thepranami.notebook.Database.NotebookDatabse;
 import com.example.thepranami.notebook.R;
+import com.example.thepranami.notebook.Service.ServiceOnSuccess;
 
 import java.util.Random;
 
@@ -69,20 +77,34 @@ public class AddDataFragment extends Fragment {
                     boolean isDataInsert = notebookDatabse.insertData(Integer.parseInt(AMOUNT),
                             NAME, ADDRESS, MOBILE, OTHER);
 
-                    if (isDataInsert = true) {
+                    if (isDataInsert == true) {
 //                        Cursor cursor = notebookDatabse.getAllData();
 //                        String s = cursor.getString(0);
 //                        Log.e("aaaaaa", s);
-                        Toast.makeText(getContext(), "Thanks, You are Welcome!!!!", Toast.LENGTH_SHORT).show();
-//                        SmsManager smsManager = SmsManager.getDefault();
-//                        smsManager.sendTextMessage(MOBILE, null, "ID :" +"\n" + "AMOUNT: " + AMOUNT+"Rs.\n" + "NAME: "+ NAME+"\n" + "OTHER: "+ OTHER+"\n" +"ADDRESS: "+ ADDRESS+"\n", null, null);
-//                        e0_id.setHint("Thanks You are Welcome!!");
-//                        e1_amt.setText(null);
-//                        e2_name.getText().clear();
-//                        e3_address.setText("");
-//                        e4_other.setText("");
-//                        e5_mobile.setText("");
-//                        //  e0_id.setText(auid);
+                        NotificationManager notificationManager = (NotificationManager)getActivity().getSystemService(getActivity().NOTIFICATION_SERVICE);
+                        NotificationCompat.Builder notiBuilder = new NotificationCompat.Builder(getActivity())
+                                .setSmallIcon(R.drawable.ic_add_data)
+                                .setContentTitle("MyData")
+                                .setContentText("One new data inserted")
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                        Intent notiIntent = new Intent(getActivity(), LoginActivity.class);
+                        notiIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+
+                        PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), 0,
+                                notiIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        notiBuilder.setContentIntent(pendingIntent);
+                        notificationManager.notify(0, notiBuilder.build());
+
+                        Cursor cursor = notebookDatabse.getMaxId();
+                        Toast.makeText(getContext(), "Thanks "+cursor.getString(0), Toast.LENGTH_SHORT).show();
+                        SmsManager smsManager = SmsManager.getDefault();
+                        smsManager.sendTextMessage(MOBILE, null, "Hi "+NAME+" you donate Rs. "+AMOUNT+" your donation ID is "+cursor.getString(0)+"\n\nThank you",
+                                null, null);
+
+//                        Intent serviceIntent = new Intent(getActivity(), ServiceOnSuccess.class);
+//                        getActivity().startService(serviceIntent);
                     }
                     else {
                         Toast.makeText(getContext(), "Sorry, Data is not Inserted", Toast.LENGTH_SHORT).show();

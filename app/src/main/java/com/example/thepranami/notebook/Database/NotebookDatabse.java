@@ -69,8 +69,8 @@ public class NotebookDatabse extends SQLiteOpenHelper {
     //getMax id
     public android.database.Cursor getMaxId(){
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.query(TABLE_NAME, null, null, null,
-                null, null, null);
+        String sq = "SELECT ID from donor_tbl order by ID DESC limit 1";
+        Cursor cursor = database.rawQuery(sq, null);
         cursor.moveToLast();
         return cursor;
     }
@@ -88,4 +88,5 @@ public class NotebookDatabse extends SQLiteOpenHelper {
         db.update(TABLE_NAME, cv, "ID = ?", new String[]{id});
         return true;
     }
+
 }
